@@ -13,10 +13,7 @@ files =['/var/backup/mysql2-av/mysql/snap_time','/var/backup/mysql-av/mysql/snap
 
 success = True
 delta = 12
-
-str(os.system('date +\"%Y%m%d%H%M%S\" > /tmp/now'))
-n = open('/tmp/now','r')
-now = str(n.readline().strip())
+now = str(os.popen('date +\"%Y%m%d%H%M%S\"').read().strip())
 
 def convert_timedelta(duration):
     days, seconds = duration.days, duration.seconds
