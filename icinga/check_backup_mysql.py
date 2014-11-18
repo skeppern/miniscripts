@@ -5,7 +5,6 @@
 # Company: Fareoffice CRS AB
 ##
 
-
 import os
 import sys
 import datetime
@@ -13,10 +12,8 @@ import datetime
 files =['/var/backup/mysql2-av/mysql/snap_time','/var/backup/mysql-av/mysql/snap_time','/var/backup/webresmysql-av/mysql/snap_time','/var/backup/eff-mysql-av/mysql/snap_time','/var/backup/rentalfront-mysql-av/mysql/snap_time']
 
 success = True
-
 delta = 12
 
-#Getting the current time
 str(os.system('date +\"%Y%m%d%H%M%S\" > /tmp/now'))
 n = open('/tmp/now','r')
 now = str(n.readline().strip())
@@ -34,13 +31,8 @@ def test(filname):
     d = datetime.datetime.strptime(then, '%a %b  %d %H:%M:%S %Z %Y')
     n = datetime.datetime.strptime(now, '%Y%m%d%H%M%S')
     datefile = str(datetime.datetime.strftime(d, '%Y%m%d%H%M%S'))
-
     duration = n - d
-
     hours, minutes, seconds = convert_timedelta(duration)
-
-    #print "Old: " + then + " New: " + now + " Duration: " + str(hours) + " " + str(minutes)
-
     if hours >= delta:
          print "CRITICAL: Last backup " + str(hours) + " hours ago: " + filname
          return False
