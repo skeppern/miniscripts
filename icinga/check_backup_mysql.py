@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+##
+# Created by: David Skeppstedt
+# Company: Fareoffice CRS AB
+##
+
+
 import os
 import sys
 import datetime
@@ -14,10 +20,6 @@ delta = 12
 str(os.system('date +\"%Y%m%d%H%M%S\" > /tmp/now'))
 n = open('/tmp/now','r')
 now = str(n.readline().strip())
-
-runtime = str(datetime.datetime.now().date()) + " 08:45:00"
-r = datetime.datetime.strptime(runtime, '%Y-%m-%d %H:%M:%S')
-runtime = str(datetime.datetime.strftime(r, '%Y%m%d%H%M%S'))
 
 def convert_timedelta(duration):
     days, seconds = duration.days, duration.seconds
