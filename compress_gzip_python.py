@@ -12,7 +12,7 @@ import zlib
 import gzip
 from StringIO import StringIO
 
-cnx = mysql.connector.connect(user='root', database='r2d2_prod', password='b0mb3r&GRANATER', charset='utf8', autocommit=True)
+cnx = mysql.connector.connect(user='root', database='r2d2_prod', password='xxx', charset='utf8', autocommit=True)
 cursor = cnx.cursor(dictionary=True, buffered=True)
 insertor = cnx.cursor(dictionary=True)
 cursor.execute("SELECT id, body FROM sent_email WHERE is_compressed='0' LIMIT 20000")
