@@ -1,3 +1,10 @@
+'''
+
+This Script takes data from MySQL, compresses it and put it back to the database.
+
+'''
+
+
 from __future__ import print_function
 from datetime import date, datetime, timedelta
 import mysql.connector
@@ -16,10 +23,7 @@ while row is not None:
         strio.write(gzip.zlib.compress(row['body'], 9))
         parameters = (strio.getvalue().strip(), row['id'])
         insertor.execute(update_query, parameters)
-        #print(update_query % parameters)
-        #cursor.execute(update_query, parameters)
         print("Compressed id: {0}".format(row['id']))
-        #print(compressed_body)
         cnx.commit()
         row = cursor.fetchone()
 cursor.close()
